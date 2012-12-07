@@ -16,21 +16,22 @@ The shared config is organized in a hierarchical path structure, with the direct
 
 ... in a folder tree like:
 
-> *root*
-> |_website
-> |__prod
-> |___shared.conf
+```*root*
+|_website
+|__prod
+|___shared.conf```
 
 ... then you could refer to `${website.prod.database.port}` in your config files. See? The file is in "website/prod", so that's converted to "website.prod." and prefixed on "database.port".
 
 You could use this value in any file. For example:
 
->    <appConfig>
->     <database>
->        <host>localhost</host>
->        <port>${website.prod.database.port}</port>
->     </database>
->    </appConfig>
+```
+<appConfig>
+  <database>
+    <host>localhost</host>
+    <port>${website.prod.database.port}</port>
+  </database>
+</appConfig>```
 
 
 
