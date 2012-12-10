@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple http configuration file server based on [@typesafe/config](https://github.com/typesafe/config "Config") and [@playframework/Play20](http://www.playframework.org/ "Play!"). The server will return config files via http based on a directory hierarchy you provide. That file hierarchy can serve up static files, or you can be more dynamic with it it.
+This is a simple http configuration file server based on [@typesafe/config](https://github.com/typesafe/config "Config") and [@playframework/Play20](http://www.playframework.org/ "Play!"). The server will return config files via http based on a directory hierarchy you provide. That file hierarchy can serve up static files, or you can be more dynamic with it.
 
 ### Dynamic Configuration
 
@@ -17,10 +17,10 @@ The shared config is organized in a hierarchical path structure, with the direct
 ... in a folder tree like:
 
 ```
-*root*
-|_website
-|__prod
-|___shared.conf
+_root_
+|-> website
+|---> prod
+|-----> shared.conf
 ```
 
 ... then you could refer to `${website.prod.database.port}` in your config files. See? The file is in "website/prod", so that's converted to "website.prod." and prefixed on "database.port".
@@ -36,7 +36,7 @@ You could use this value in any file. For example:
 </appConfig>
 ```
 
-To retrieve this file, simply make an http call to your server & port with a `/config` prefix on the path. If your config file directory has `/blog/prod/mysql.ini` you would retrieve the file like this: `http://configserver:port/config//blog/prod/mysql.ini`.
+To retrieve this file, simply make an http call to your server & port with a `/config` prefix on the path. If your config file directory has `/blog/prod/mysql.ini` you would retrieve the file like this: `http://configserver:port/config/blog/prod/mysql.ini`.
 
 ## Setup
 
