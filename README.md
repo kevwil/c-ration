@@ -83,6 +83,8 @@ socket=/var/run/mysql.sock
 ...
 ```
 
+There is a sample configuration repository at [@kevwil/c-ration-sample](https://github.com/kevwil/c-ration-sample).
+
 ###### LICENSE
 
 MIT License 
