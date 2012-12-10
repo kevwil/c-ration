@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple configuration file server based on [@typesafe/config](https://github.com/typesafe/config "Config") and [@playframework/Play20](http://www.playframework.org/ "Play!"). The server will return config files based on a directory hierarchy you provide. That file hierarchy can serve up static files, or you can be more dynamic with it it.
+This is a simple http configuration file server based on [@typesafe/config](https://github.com/typesafe/config "Config") and [@playframework/Play20](http://www.playframework.org/ "Play!"). The server will return config files via http based on a directory hierarchy you provide. That file hierarchy can serve up static files, or you can be more dynamic with it it.
 
 ### Dynamic Configuration
 
@@ -36,7 +36,7 @@ You could use this value in any file. For example:
 </appConfig>
 ```
 
-
+To retrieve this file, simply make an http call to your server & port with a `/config` prefix on the path. If your config file directory has `/blog/prod/mysql.ini` you would retrieve the file like this: `http://configserver:port/config//blog/prod/mysql.ini`.
 
 ## Setup
 
@@ -47,6 +47,41 @@ This app assumes you have Play! installed. Run `play stage` from the app folder.
 In `conf/application.conf` there is `configfiles.rootdir` which must point to the root of the directory hierarchy you wish to serve up. The default is `configfiles` within the app folder (not provided).
 
 ## Examples
+
+Given:
+
+```
+_root_
+|-> blog
+|---> prod
+|-----> my.cnf
+|-----> shared.conf
+```
+
+my.cnf:
+```
+...
+[mysqld]
+port=${blog.prod.mysql.port}
+socket=${blog.prod.mysql.socket}
+...
+```
+
+shared.conf:
+```
+mysql.port=3306
+mysql.socket=/var/run/mysql.sock
+```
+
+You can retrieve your my.cnf file for the production blog with `wget http://server:port/config/blog/prod/my.cnf` or `curl -O http://server:port/config/blog/prod/my.cnf` (or any other means of downloading a file from http) and you will see:
+
+```
+...
+[mysqld]
+port=3306
+socket=/var/run/mysql.sock
+...
+```
 
 ###### LICENSE
 
