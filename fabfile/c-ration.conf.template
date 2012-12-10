@@ -2,4 +2,4 @@
 description "configuration server"
 author      "Kevin Williams"
 start on startup
-exec su - appuser -c "cd %(appdir)s; sh ./start -Dhttp.port=8080 -Dconfigfiles.rootdir=%(config_repo)s"
+exec su - appuser -c "cd %(appdir)s; sh ./start -Dhttp.port=8080 -Dconfigfiles.rootdir=%(config_repo)s/config"
