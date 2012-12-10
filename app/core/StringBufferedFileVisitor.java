@@ -33,7 +33,14 @@ extends SimpleFileVisitor<Path>
             for( String line : contents )
             {
                 // prefix the line so that it reflects directory heirarchy
-                _buffer.append( prefix ).append( line ).append( "\n" );
+                if( line.startsWith( "include" ))
+                {
+                    _buffer.append( line ).append( "\n" );
+                }
+                else
+                {
+                    _buffer.append( prefix ).append( line ).append( "\n" );
+                }
             }
         }
 

@@ -1,6 +1,6 @@
 package controllers;
 
-import core.Config;
+import core.ConfigMaster;
 import core.ConfigResult;
 import play.mvc.*;
 
@@ -8,7 +8,7 @@ public class Configuration extends Controller
 {
     public static Result getFile( final String filename )
     {
-        ConfigResult r = Config.getFile( filename );
+        ConfigResult r = ConfigMaster.getFile( filename );
         if( r.notFound() )
         {
             return notFound();
