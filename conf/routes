@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET		/readme						controllers.Application.readme()
 
 # Config access
 # GET		/:appname/:environment/:filename	controllers.Configuration.assembleConfig(appname : String, environment: String, filename: String)
