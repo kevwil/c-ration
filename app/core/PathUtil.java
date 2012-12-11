@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -42,5 +43,20 @@ public abstract class PathUtil
     public static InputStream toStream( final String string )
     {
         return new BufferedInputStream( new ByteArrayInputStream( string.getBytes( FILE_CHARSET ) ) );
+    }
+    
+    public static String getContentType( final String input )
+    {
+        try
+        {
+            InputStream in = PathUtil.toStream( input );
+            String mime = URLConnection.guessContentTypeFromStream( in );
+            in.close();
+            return mime;
+        }
+        catch( IOException e )
+        {
+            return null;
+        }
     }
 }

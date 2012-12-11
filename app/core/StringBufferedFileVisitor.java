@@ -32,7 +32,7 @@ extends SimpleFileVisitor<Path>
             String prefix = PathUtil.tokenizeRelativePath( _root, file.getParent() );
             for( String line : contents )
             {
-                // prefix the line so that it reflects directory heirarchy
+                // prefix the line so that it reflects directory hierarchy
                 if( line.startsWith( "include" ))
                 {
                     _buffer.append( line ).append( "\n" );

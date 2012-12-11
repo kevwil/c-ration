@@ -12,7 +12,7 @@ public class SharedConfigTreeWalker
     
     public SharedConfigTreeWalker( final String root )
     {
-        rootPath = FileSystems.getDefault().getPath( root );
+        rootPath = Paths.get( root );
         rootConfig = ConfigFactory.empty("shared config file tree rooted in "+rootPath.toAbsolutePath());
     }
 

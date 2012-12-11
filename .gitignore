@@ -15,5 +15,4 @@ dist
 .settings/
 .target/
 bin/
-configfiles/
 *.pyc

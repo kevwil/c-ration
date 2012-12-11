@@ -1,8 +1,5 @@
 package core;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URLConnection;
 import java.nio.file.*;
 
 public class ConfigMaster
@@ -21,7 +18,7 @@ public class ConfigMaster
                 r.setStream( PathUtil.toStream( content ) );
 //                String ct = Files.probeContentType( path );
 //                String ct = URLConnection.guessContentTypeFromName( path.getFileName().toString() );
-                String ct = getContentType( content );
+                String ct = PathUtil.getContentType( content );
                 if( ct != null && !ct.isEmpty() )
                 {
                     r.setContentType( ct );
@@ -33,20 +30,5 @@ public class ConfigMaster
             }
         }
         return r;
-    }
-    
-    private static String getContentType( final String input )
-    {
-        try
-        {
-            InputStream in = PathUtil.toStream( input );
-            String mime = URLConnection.guessContentTypeFromStream( in );
-            in.close();
-            return mime;
-        }
-        catch( IOException e )
-        {
-            return null;
-        }
     }
 }
