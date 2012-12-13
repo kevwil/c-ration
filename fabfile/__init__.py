@@ -10,7 +10,6 @@ import os
 # override with '-u <username>' on command-line
 env.user = 'ubuntu'
 
-dist_package_name = 'c-ration-1.0-SNAPSHOT'
 
 @task
 def deploy(approot='/home/appuser',config_repo='/opt/config'):
@@ -18,16 +17,17 @@ def deploy(approot='/home/appuser',config_repo='/opt/config'):
   with settings(hide('warnings'),warn_only=True):
     sudo("stop c-ration")
   update_config(config_repo)
-  local("play clean compile dist")
-  if exists(approot+"/"+dist_package_name+".zip"):
-    sudo("rm "+approot+"/"+dist_package_name+".zip")
-  appdir=approot+"/"+dist_package_name
-  if exists(appdir):
+  appdir=approot+"/c-ration"
+  with settings(hide('warnings'),warn_only=True):
     sudo("rm -rf "+appdir)
-  put("dist/"+dist_package_name+".zip", approot+"/"+dist_package_name+".zip", use_sudo=True)
-  sudo("chown appuser:appuser "+appdir+".zip")
-  with cd(approot):
-    sudo("su - appuser -c 'unzip "+dist_package_name+".zip'")
+  sudo("mkdir -p "+appdir)
+
+  local("play clean test stage")
+
+  put("target/staged", appdir, use_sudo=True)
+  put("target/start", appdir+"/start", use_sudo=True)
+  put("README.md", appdir+"/README.md", use_sudo=True)
+  sudo("chown -R appuser:appuser "+appdir)
   template_file=os.path.abspath(os.path.join(os.path.dirname(__file__),"c-ration.conf.template"))
   upload_template(template_file, "/etc/init/c-ration.conf",{"appdir":appdir,"config_repo":config_repo},use_sudo=True)
   sudo("chown root:root /etc/init/c-ration.conf")
