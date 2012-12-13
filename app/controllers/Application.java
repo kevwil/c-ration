@@ -40,4 +40,15 @@ public class Application extends Controller
         }
     }
 
+    public static Result tree()
+    {
+        try
+        {
+            return ok(tree.render());
+        }
+        catch(Exception e)
+        {
+            return internalServerError( e.getLocalizedMessage() );
+        }
+    }
 }

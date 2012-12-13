@@ -5,6 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET		/readme						controllers.Application.readme()
+GET   /tree             controllers.Application.tree()
+GET   /treedata.json    controllers.Configuration.tree()
 
 # Config access
 # GET		/:appname/:environment/:filename	controllers.Configuration.assembleConfig(appname : String, environment: String, filename: String)
