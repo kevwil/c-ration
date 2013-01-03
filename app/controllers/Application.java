@@ -7,6 +7,7 @@ import org.pegdown.PegDownProcessor;
 
 import core.PathUtil;
 
+import play.cache.Cached;
 //import play.*;
 import play.mvc.*;
 
@@ -20,11 +21,13 @@ public class Application extends Controller
             Extensions.AUTOLINKS +
             Extensions.FENCED_CODE_BLOCKS);
 
+    @Cached( key = "homePage" )
     public static Result index()
     {
         return ok(index.render("Configuration!"));
     }
 
+    @Cached( key = "readMe" )
     public static Result readme()
     {
         Path mdPath = Paths.get( System.getProperty( "user.dir" ), "README.md" );
@@ -40,6 +43,7 @@ public class Application extends Controller
         }
     }
 
+    @Cached( key = "tree", duration = 60 )
     public static Result tree()
     {
         try
