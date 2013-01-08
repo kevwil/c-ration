@@ -9,7 +9,8 @@ object ApplicationBuild extends Build {
 
     val appDependencies = Seq(
 //      "com.typesafe" % "config" % "1.0.0"
-      "org.pegdown" % "pegdown" % "1.2.1"
+      "org.pegdown" % "pegdown" % "1.2.1",
+      "org.mockito" % "mockito-all" % "1.9.5" % "test"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
