@@ -8,7 +8,7 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
-//      "com.typesafe" % "config" % "1.0.0"
+      "com.typesafe" % "config" % "1.0.0",
       "org.pegdown" % "pegdown" % "1.2.1",
       "org.mockito" % "mockito-all" % "1.9.5" % "test"
     )
