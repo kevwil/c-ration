@@ -1,6 +1,6 @@
 import sbt._
 import Keys._
-import PlayProject._
+import play.Project._
 
 object ApplicationBuild extends Build {
 
@@ -8,12 +8,13 @@ object ApplicationBuild extends Build {
     val appVersion      = "1.0-SNAPSHOT"
 
     val appDependencies = Seq(
-      "com.typesafe" % "config" % "1.0.0",
-      "org.pegdown" % "pegdown" % "1.2.1",
+        cache,
+      "com.typesafe" % "config" % "1.0.2",
+      "org.pegdown" % "pegdown" % "1.4.1",
       "org.mockito" % "mockito-all" % "1.9.5" % "test"
     )
 
-    val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
+    val main = play.Project(appName, appVersion, appDependencies).settings(
       // Add your own project settings here      
     )
 

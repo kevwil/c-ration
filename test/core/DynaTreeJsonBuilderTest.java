@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.nio.file.Paths;
 
-import org.codehaus.jackson.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.*;
 
 import play.libs.Json;

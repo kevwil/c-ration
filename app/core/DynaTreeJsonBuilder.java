@@ -3,8 +3,8 @@ package core;
 import java.io.File;
 import java.nio.file.Path;
 
-import org.codehaus.jackson.node.ArrayNode;
-import org.codehaus.jackson.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import play.libs.Json;
 

@@ -2,7 +2,7 @@ package controllers;
 
 import java.nio.file.Path;
 
-import org.codehaus.jackson.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import core.ConfigMaster;
 import core.ConfigResult;

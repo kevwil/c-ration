@@ -18,3 +18,4 @@ bin/
 *.pyc
 .DS_Store
 .pydevproject
+.cache
