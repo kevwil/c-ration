@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple http configuration file server based on [@typesafe/config](https://github.com/typesafe/config "Config") and [@playframework/Play20](http://www.playframework.org/ "Play!"). The server will return config files via http based on a directory hierarchy you provide. That file hierarchy can serve up static files, or you can be more dynamic with it.
+This is a simple http configuration file server based on [@typesafehub/config](https://github.com/typesafehub/config "Config") and [@playframework/playframework](http://www.playframework.org/ "Play!"). The server will return config files via http based on a directory hierarchy you provide. That file hierarchy can serve up static files, or you can be more dynamic with it.
 
 ### Dynamic Configuration
 
